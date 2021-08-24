@@ -8,7 +8,7 @@ Clone this repository using the ```git clone https://github.com/mario-j/address-
 
 Navigate to the my-app directory using ```cd address-search/my-app```.
 
-Install dependencies using ```npm install```.
+Install dependencies using ```npm install``` and build the Angular app using ```ng build```.
 
 Run the server locally using ```node server.js```.
 
