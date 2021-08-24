@@ -22,4 +22,6 @@ The CSV currently being used is taken from Redfin and can be found here https://
 
 ## Project Layout
 
-The project is set up in the ```server.js``` file. Two hosts are created on ports 4200 and 3000. The first is the Angular app hosted on port 4200. The angular app houses the UI and other client-related functionality. The second is hosted on 3000 and houses the API endpoint that the Angular app hits to retreive the search results from the csv list.
+The project is set up in the ```server.js``` file. Two hosts are created on ports 4200 and 3000. The first is the Angular app hosted on port 4200. The angular app houses the UI and other client-related functionality. The Angular components and styles can be found in the src folder and its subfolders 
+
+The API is hosted on port 3000 and houses the routes, controllers, and models that the Angular app hits to retreive the search results from the csv list. The API components can be found in the api folder and its subfolders.
