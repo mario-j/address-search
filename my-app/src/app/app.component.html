@@ -15,10 +15,10 @@
         </mat-form-field>
         <mat-form-field class="col-sm-6 col-md-6 col-lg-6" appearance="outline">
           <mat-label>Sort</mat-label>
-          <select matNativeControl (change)=sort($event)>
-            <option value="priceLowToHigh">Price Low -> High</option>
-            <option value="priceHighToLow">Price High -> Low</option>
-          </select>
+          <mat-select matNativeControl (selectionChange)=updateSort($event) [value]="sortBy">
+            <mat-option value="priceLowToHigh">Price Low -> High</mat-option>
+            <mat-option value="priceHighToLow">Price High -> Low</mat-option>
+          </mat-select>
         </mat-form-field>
         <div *ngIf="homes.length == 0" class="empty-message">No results</div>
         <div style="max-height: 300px; overflow:auto">

@@ -24,16 +24,13 @@
   font-size: 24px;
 }
 
-.toolbar img {
-  margin: 0 16px;
-}
-
 .header {
   font-size: 24px;
   font-weight: 500;
+  margin-bottom:20px;
 }
 
-.selectedHome-row {
+.home-row {
   padding: 20px;
   border-bottom: 1px solid #f0f0f0;
   cursor: pointer;

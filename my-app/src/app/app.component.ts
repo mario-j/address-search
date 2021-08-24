@@ -7,7 +7,7 @@ import { HomeService } from './services/home.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   constructor(private homeService: HomeService) { }
@@ -37,8 +37,8 @@ export class AppComponent {
     });
   }
 
-  sort(event: any) {
-    this.sortBy = event.target.value;
+  updateSort(event: any) {
+    this.sortBy = event.value;
     this.sortHomes();
   }
 
