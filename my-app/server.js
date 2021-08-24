@@ -21,5 +21,9 @@ var server = app.listen(nodePort, () => console.log(`App running on: http://loca
 app.use(cors());
 
 app.get("/api/search", (req, res, next) => {
- res.json({address: "Dummy Address 1", city:"San Francisco", state: "CA", price:1000000});
+  var dummyJson = [
+    {"address": "Dummy Address 1", "city": "San Francisco", "state": "CA", "price":1000000},
+    {"address": "Dummy Address 2", "city":"Des Moines", "state": "IA", "price":200000}
+  ];
+  res.json(dummyJson.filter(home => home.address.toString().toLowerCase().includes(req.query.address.toString().toLowerCase())));
 });

@@ -18,31 +18,27 @@ export class AppComponent {
   @ViewChild('startError') startError: ElementRef | undefined;
 
   ngOnInit() {
-    // this.homeService.search().subscribe((homes: Home[]) => {
-    // console.log("home", homes);
-    // var loadedHome = new Home();
-    // loadedHome.address = home.address;
-    // loadedHome.city = home.city;
-    // loadedHome.state = home.state;
-    // loadedHome.price = home.price;
-    // let homes = [...this.homes];
-    // homes.push(loadedHome);
-    // var unsortedHomes = [...this.homes, loadedHome]
-    // this.homes = unsortedHomes.sort((a: Home, b: Home) => { b.price - a.price });
-    // });
+    this.homeService.search('').subscribe((homes: any) => {
+      this.homes = homes;
+    });
   }
 
   title = 'Home-Search';
 
   selectHome(home: Home) {
+    this.selectedHome = home;
     console.log("select", home);
   }
 
   search(event: any){
-    var searchTerm = event.target.value;
-    this.homeService.search(searchTerm).subscribe((homes: any) => {
-      console.log("test", homes);
+    var address = event.target.value;
+    this.homeService.search(address).subscribe((homes: any) => {
+      this.homes = homes;
     });
   }
+
+  numberWithCommas(x: any) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 }

@@ -73,7 +73,7 @@
 
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-  <span style="padding:5px">Home Search</span>
+  <span style="padding:5px">Home Search Exercise</span>
 </div>
 
 <div class="row col-sm-12 col-md-12 col-lg-12">
@@ -82,34 +82,39 @@
 
     <mat-card style="margin:20px">
       <div class="row col-sm-12 col-md-12 col-lg-12">
-        <div class="header">Search</div>
-        <div *ngIf="homes.length == 0" class="empty-message">No homes have been loaded</div>
-          <mat-form-field appearance="outline">
-            <mat-label>Search</mat-label>
-            <input matInput type="text" class="form-control" placeholder="123 Fake St." (keyup)="search($event)">
-          </mat-form-field>
+        <div class="header">Homes</div>
+        <mat-form-field appearance="outline">
+          <mat-label>Search</mat-label>
+          <input matInput type="text" class="form-control" placeholder="123 Fake St." (keyup)="search($event)">
+        </mat-form-field>
+        <div *ngIf="homes.length == 0" class="empty-message">No results</div>
         <div style="max-height: 300px; overflow:auto">
           <div *ngFor="let home of homes" class="email-row row col-sm-12 col-md-12 col-lg-12"
-            (click)="selectHome(home)">
-            <div class="col-sm-6 col-md-6 col-lg-6">
-              <span class=row-header>{{home.address}}</span>
-              <br />
-              <span class="row-subheader">{{home.state}}</span>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-6 row-subheader" style="text-align:right; margin:auto">
-              {{home.price || 'Loading...'}}
-            </div>
+          (click)="selectHome(home)">
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <span class=row-subheader>{{home.address}}</span>
+            <br />
+            <span class="row-subheader">{{home.state}}</span>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 row-subheader" style="text-align:right; margin:auto">
+            ${{numberWithCommas(home.price)}}
           </div>
         </div>
       </div>
-    </mat-card>
-  </div>
+    </div>
+  </mat-card>
+</div>
 
-  <div class="col-sm-6 col-md-6 col-lg-6">
-    <mat-card style=margin:20px>
-      <div class="header">Details</div>
-      <div *ngIf="!selectedHome" class="empty-message">No home is currently selected</div>
-      <div #bodyContainer style="max-height: 80vh; overflow:auto"></div>
-    </mat-card>
-  </div>
+<div class="col-sm-6 col-md-6 col-lg-6">
+  <mat-card style=margin:20px>
+    <div class="header">Details</div>
+    <div *ngIf="!selectedHome" class="empty-message">No home is currently selected</div>
+    <div *ngIf="selectedHome">
+      <div>Address: {{selectedHome.address}}</div>
+      <div>City: {{selectedHome.city}}</div>
+      <div>State: {{selectedHome.state}}</div>
+      <div>Price: ${{numberWithCommas(selectedHome.price)}}</div>
+    </div>
+  </mat-card>
+</div>
 </div>
