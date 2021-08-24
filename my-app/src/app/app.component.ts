@@ -7,19 +7,19 @@ import { HomeService } from './services/home.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   constructor(private homeService: HomeService) { }
 
   homes: Home[] = [];
   selectedHome: Home | null = null;
-  @ViewChild('bodyContainer') bodyContainer: ElementRef | undefined;
-  @ViewChild('startError') startError: ElementRef | undefined;
+  sortBy: string = "priceLowToHigh";
 
   ngOnInit() {
     this.homeService.search('').subscribe((homes: any) => {
       this.homes = homes;
+      this.sortHomes();
     });
   }
 
@@ -27,14 +27,27 @@ export class AppComponent {
 
   selectHome(home: Home) {
     this.selectedHome = home;
-    console.log("select", home);
   }
 
   search(event: any){
     var address = event.target.value;
     this.homeService.search(address).subscribe((homes: any) => {
       this.homes = homes;
+      this.sortHomes();
     });
+  }
+
+  sort(event: any) {
+    this.sortBy = event.target.value;
+    this.sortHomes();
+  }
+
+  sortHomes() {
+    console.log("homes", this.homes[0].price);
+    if (this.sortBy == "priceLowToHigh")
+      this.homes.sort((a, b) => {return a.price - b.price});
+    else if (this.sortBy == "priceHighToLow")
+      this.homes.sort((a, b) => {return b.price - a.price});
   }
 
   numberWithCommas(x: any) {
