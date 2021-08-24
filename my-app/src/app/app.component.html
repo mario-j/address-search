@@ -1,5 +1,5 @@
 <div class="toolbar" role="banner">
-  <span style="padding:5px">Home Search Exercise</span>
+  <span style="padding:5px">Search Page Exercise</span>
 </div>
 
 <div class="row col-sm-12 col-md-12 col-lg-12">
@@ -10,7 +10,7 @@
       <div class="row col-sm-12 col-md-12 col-lg-12">
         <div class="header">Homes</div>
         <mat-form-field class="col-sm-6 col-md-6 col-lg-6" appearance="outline">
-          <mat-label>Search</mat-label>
+          <mat-label>Address Search</mat-label>
           <input matInput type="text" class="form-control" placeholder="123 Fake St." (keyup)="search($event)">
         </mat-form-field>
         <mat-form-field class="col-sm-6 col-md-6 col-lg-6" appearance="outline">
@@ -21,7 +21,7 @@
           </mat-select>
         </mat-form-field>
         <div *ngIf="homes.length == 0" class="empty-message">No results</div>
-        <div style="max-height: 300px; overflow:auto">
+        <div style="max-height: 400px; overflow:auto">
           <div *ngFor="let home of homes" class="home-row row col-sm-12 col-md-12 col-lg-12"
           (click)="selectHome(home)">
           <div class="col-sm-6 col-md-6 col-lg-6">
