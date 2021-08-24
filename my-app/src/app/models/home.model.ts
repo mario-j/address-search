@@ -9,4 +9,5 @@ export class Home {
     sqfeet: number = 0;
     lotSize: number = 0;
     yearBuilt:number = 0;
+    propertyType:string = '';
 }

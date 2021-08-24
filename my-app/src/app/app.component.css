@@ -43,3 +43,16 @@
 .row-subheader {
   font-size: 14px;
 }
+
+.med-font {
+  font-size:24px;
+}
+
+.pad-sm {
+  padding:10px;
+}
+
+.right {
+  float: right;
+  margin: auto;
+}

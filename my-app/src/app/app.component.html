@@ -21,7 +21,16 @@
           </mat-select>
         </mat-form-field>
         <div *ngIf="homes.length == 0" class="empty-message">No results</div>
-        <div style="max-height: 400px; overflow:auto">
+        <div *ngIf="homes.length > 0" style="max-height: 400px; overflow:auto">
+          <div class="home-row row col-sm-12 col-md-12 col-lg-12">
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <span class=row-subheader><b>Address</b></span>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6 row-subheader" style="text-align:right; margin:auto">
+            <b>Price</b>
+          </div>
+        </div>
+
           <div *ngFor="let home of homes" class="home-row row col-sm-12 col-md-12 col-lg-12"
           (click)="selectHome(home)">
           <div class="col-sm-6 col-md-6 col-lg-6">
@@ -43,16 +52,56 @@
     <div class="header">Details</div>
     <div *ngIf="!selectedHome" class="empty-message">No home is currently selected</div>
     <div *ngIf="selectedHome">
-      <div>Address: {{selectedHome.address}}</div>
-      <div>City: {{selectedHome.city}}</div>
-      <div>State: {{selectedHome.state}}</div>
-      <div>Price: ${{numberWithCommas(selectedHome.price)}}</div>
-      <div>Zip: {{selectedHome.zip}}</div>
-      <div>Beds: {{selectedHome.beds}}</div>
-      <div>Baths: {{selectedHome.baths}}</div>
-      <div>Square Feet: ${{numberWithCommas(selectedHome.sqfeet)}}</div>
-      <div>Lot Size: {{selectedHome.lotSize}}</div>
-      <div>Year Built: {{selectedHome.yearBuilt}}</div>
+      <div class="row col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-12 col-md-12 col-lg-12 pad-sm">
+          <b>{{selectedHome.address}}</b>, {{selectedHome.city}}, {{selectedHome.state}} {{selectedHome.zip}}
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4 ">
+          <b *ngIf="selectedHome.price" class="med-font">${{numberWithCommas(selectedHome.price)}}</b>
+          <b *ngIf="!selectedHome.price" class="med-font">-</b>
+          <br/>
+
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-2">
+          <b *ngIf="selectedHome.beds" class="med-font">{{selectedHome.beds}}</b>
+          <b *ngIf="!selectedHome.beds" class="med-font">-</b>
+          <br/>
+          Beds
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-2">
+          <b *ngIf="selectedHome.baths" class="med-font">{{selectedHome.baths}}</b>
+          <b *ngIf="!selectedHome.baths" class="med-font">-</b>
+          <br/>
+          Baths
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <b *ngIf="selectedHome.sqfeet" class="med-font">{{numberWithCommas(selectedHome.sqfeet)}}</b>
+          <b *ngIf="!selectedHome.sqfeet" class="med-font">-</b>
+          <br/>
+          Sq Ft
+        </div>
+      </div>
+
+      <div class="row col-sm-12 col-md-12 col-lg-12">
+        <div class="col-sm-12 col-md-12 col-lg-12 pad-sm" style=margin-top:30px;>
+          Additional Info
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+          <span>Property Type</span>
+          <span *ngIf="selectedHome.propertyType" class="right">{{selectedHome.propertyType}}</span>
+          <span *ngIf="!selectedHome.propertyType" class="right">-</span>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 ">
+          <span>Year Built</span>
+          <span *ngIf="selectedHome.yearBuilt" class="right">{{selectedHome.yearBuilt}}</span>
+          <span *ngIf="!selectedHome.yearBuilt" class="right">-</span>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 ">
+          <span>Lot Size</span>
+          <span *ngIf="selectedHome.lotSize" class="right">{{numberWithCommas(selectedHome.lotSize)}} sq feet</span>
+          <span *ngIf="!selectedHome.lotSize" class="right">-</span>
+        </div>
+      </div>
     </div>
   </mat-card>
 </div>

@@ -38,6 +38,7 @@ fs.createReadStream('./csv/homes.csv')
     newHome.sqfeet = data["SQUARE FEET"];
     newHome.lotSize = data["LOT SIZE"];
     newHome.yearBuilt = data["YEAR BUILT"];
+    newHome.propertyType = data["PROPERTY TYPE"];
     homes.push(newHome);
   })
   .on('end', () => console.log("Done"));
@@ -58,5 +59,6 @@ class Home {
     this.sqfeet = 0;
     this.lotSize = 0;
     this.yearBuilt = 0;
+    this.propertyType = '';
   }
 }
