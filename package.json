@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "server.js"
+    "start": "cd my-app && node server.js"
   },
   "repository": {
     "type": "git",
