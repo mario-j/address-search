@@ -20,45 +20,5 @@ const nodePort = 3000;
 var server = app.listen(nodePort, () => console.log(`App running on: http://localhost:${nodePort}`));
 app.use(cors());
 
-const csv = require('csv-parser')
-const fs = require('fs')
-const homes = []; 
-
-fs.createReadStream('./csv/homes.csv')
-  .pipe(csv())
-  .on('data', (data) => {
-    var newHome = new Home();
-    newHome.address = data["ADDRESS"];
-    newHome.city = data["CITY"];
-    newHome.state = data["STATE OR PROVINCE"];
-    newHome.price = data["PRICE"];
-    newHome.zip = data["ZIP OR POSTAL CODE"];
-    newHome.beds = data["BEDS"];
-    newHome.baths = data["BATHS"];
-    newHome.sqfeet = data["SQUARE FEET"];
-    newHome.lotSize = data["LOT SIZE"];
-    newHome.yearBuilt = data["YEAR BUILT"];
-    newHome.propertyType = data["PROPERTY TYPE"];
-    homes.push(newHome);
-  })
-  .on('end', () => console.log("Done"));
-
-app.get("/api/search", (req, res, next) => {
-  res.send(homes.filter(home => home.address.toString().toLowerCase().includes(req.query.address.toString().toLowerCase())));
-});
-
-class Home {
-  constructor() {
-    this.address = '';
-    this.city = '';
-    this.state = '';
-    this.price = 0;
-    this.zip = 0;
-    this.beds = 0;
-    this.baths = 0;
-    this.sqfeet = 0;
-    this.lotSize = 0;
-    this.yearBuilt = 0;
-    this.propertyType = '';
-  }
-}
+var routes = require('./api/routes/routes'); //importing route
+routes(app); //register the route
