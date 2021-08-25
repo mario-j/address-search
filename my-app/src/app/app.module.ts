@@ -9,7 +9,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import {FormControl, FormGroupDirective, FormsModule, NgForm, Validators, ReactiveFormsModule, FormGroup,} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AppComponent } from './app.component';
 import { HomeService } from './services/home.service';
@@ -33,12 +32,6 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    ErrorStateMatcher,
-    FormsModule,
-    Validators,
-    FormControl,
-    FormGroupDirective,
-    NgForm,
     HomeService
   ],
   bootstrap: [AppComponent]
