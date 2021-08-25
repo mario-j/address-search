@@ -1,32 +1,27 @@
-# Email Exercise
+# Address Search
 
-This web app retrieves and displays emails from a specified server.
+This web app parses a CSV of address listings and displays them in a search window.
 
 ## Setup
 
-Pull this image to your local machine using the ```docker pull mariojordan/email-exercise``` command in your terminal.
+Clone this repository using the ```git clone https://github.com/mario-j/address-search.git``` command in your terminal.
 
-Run the image locally using ```docker run --name email-exercise -d -p 4200:4200 -p 3000:3000 mariojordan/email-exercise```
+Navigate to the my-app directory using ```cd address-search/my-app```.
+
+Install dependencies using ```npm install``` and build the Angular app using ```ng build```.
+
+Run the server locally using ```node server.js```.
 
 Access the project at the ```localhost:4200``` url to bring up the landing page. 
 
-![LandingPage](https://user-images.githubusercontent.com/54779892/127822441-386a6f47-f78d-4917-85d8-72647e6a6808.png)
+![image](https://user-images.githubusercontent.com/54779892/130700962-c1460b04-7cfc-45e3-8592-1da04e16d2c5.png)
 
-## Configuration
+## CSV
 
-To test I created a dummy gmail account and entered the following configuration into the Angular configuration card for IMAP:
-
-![image](https://user-images.githubusercontent.com/54779892/127822301-cd29a8fd-a3a9-4d6d-ad19-9c1cfccdfaf8.png)
-
-<b>Server Type:</b> IMAP  <br />
-<b>Encryption:</b> SSL/TSL<br />
-<b>Server:</b> imap.gmail.com <br />
-<b>Port:</b> 993 <br />
-
-The same applied for POP but with the server changed to <b>pop.gmail.com</b> and the port changed to <b>995</b> I enabled IMAP/POP access in order to access the inbox.
-
-Unfortunately, I was unable to find an ESP that allowed Non SSL connections. So I wasn't able to properly test the Non SSL ports and they may behave erratically.
+The CSV currently being used is taken from Redfin and can be found here https://www.redfin.com/city/17151/CA/San-Francisco. The Download All link at the bottom of the page downloads a CSV of the listings. The server then parses the CSV to get the information of each listing.
 
 ## Project Layout
 
-The project is set up in the ```server.js``` file. Two hosts are created on ports 3000 and 4200. The first is the Angular app hosted on port 4200. The angular app  houses the UI and other client-related functionality. The second is the Socket IO app which leverages Socket IO to emit events between the Angular UI components in order to connect to and retrieve emails from the specified email server.
+The project is set up in the ```server.js``` file. Two hosts are created on ports 4200 and 3000. The first is the Angular app hosted on port 4200. The angular app houses the UI and other client-related functionality. The Angular components and styles can be found in the src folder and its subfolders 
+
+The API is hosted on port 3000 and houses the routes, controllers, and models that the Angular app hits to retreive the search results from the csv list. The API components can be found in the api folder and its subfolders.
